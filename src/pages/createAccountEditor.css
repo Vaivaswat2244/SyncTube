@@ -1,0 +1,5 @@
+.backgorung {
+    background: rgb(68,81,193);
+    background: radial-gradient(circle, rgba(68,81,193,1) 0%, rgba(0,0,0,1) 81%);
+}
+

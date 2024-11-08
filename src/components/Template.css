@@ -1,0 +1,23 @@
+
+.imaage{
+  color: aqua;
+    animation: fadeIn 2s infinite alternate ;
+}
+
+
+
+@keyframes fadeIn {
+    /* At the beginning (0%), opacity is 0 */
+    0% {
+      margin-top: 20px;
+      scale: 1;
+
+    }
+  
+    /* At the end (100%), opacity is 1 */
+    50%,100% {
+        margin-top: 40px;
+        scale: 1.1;
+    }
+ 
+  }
