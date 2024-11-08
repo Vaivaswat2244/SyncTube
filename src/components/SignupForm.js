@@ -17,7 +17,7 @@ import axios from 'axios'
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [accountType, setAccountType] = useState("YouTuber");
+    const [accountType, setAccountType] = useState("youtuber");
     
     function changeHandler(event) {
 
@@ -39,7 +39,7 @@ import axios from 'axios'
         }
        
         setIsLoggedIn(true);
-        toast.success("Account Created");
+
         const accountData = {
             ...formData
         };
@@ -52,7 +52,7 @@ import axios from 'axios'
         console.log("printing Final account data ");
         console.log(finalData);
 
-        const url = 'https://synctube-backend-final.onrender.com/api/auth/signup';
+        const url = 'http://localhost:3002/api/auth/signup';
 
             axios.post(url, finalData, {
             headers: {
@@ -86,20 +86,20 @@ import axios from 'axios'
         className='flex bg-richblack-800 p-1 gap-x-1 my-6 rounded-full max-w-max'>
 
             <button
-            className={`${accountType === "YouTuber" 
+            className={`${accountType === "youtuber" 
             ?
               "bg-richblack-900 text-richblack-5"
             :"bg-transparent text-richblack-200"} py-2 px-5 rounded-full transition-all duration-200`}
-            onClick={()=> setAccountType("YouTuber")}>
+            onClick={()=> setAccountType("youtuber")}>
                 YouTuber
             </button>
 
             <button
-            className={`${accountType === "Editor" 
+            className={`${accountType === "editor" 
             ?
               "bg-richblack-900 text-richblack-5"
             :"bg-transparent text-richblack-200"} py-2 px-5 rounded-full transition-all duration-200`}
-            onClick={() => setAccountType("Editor")}>
+            onClick={() => setAccountType("editor")}>
                 Editor
             </button>
         </div>
