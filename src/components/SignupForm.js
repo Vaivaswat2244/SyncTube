@@ -52,7 +52,7 @@ import axios from 'axios'
         console.log("printing Final account data ");
         console.log(finalData);
 
-        const url = 'http://localhost:3002/api/auth/signup';
+        const url = 'https://synctube-backend-final.onrender.com/api/auth/signup';
 
             axios.post(url, finalData, {
             headers: {
