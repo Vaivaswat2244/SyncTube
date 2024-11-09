@@ -39,7 +39,7 @@ const SideDashboard = () => {
 
     if (loading) {
         return (
-            <div className="Rectangle relative flex flex-col w-80 h-screen bg-violet-950 bg-opacity-75">
+            <div className="Rectangle relative flex flex-col w-80 h-screen">
                 <div className="flex items-center justify-center h-full">
                     <div className="text-white">Loading...</div>
                 </div>
@@ -49,7 +49,7 @@ const SideDashboard = () => {
 
     if (error) {
         return (
-            <div className="Rectangle relative flex flex-col w-80 h-screen bg-violet-950 bg-opacity-75">
+            <div className="Rectangle relative flex flex-col w-80 h-screen ">
                 <div className="flex items-center justify-center h-full">
                     <div className="text-white">Error: {error}</div>
                 </div>
@@ -59,7 +59,7 @@ const SideDashboard = () => {
 
     return (
         <div>
-            <div className="Rectangle relative flex flex-col w-80 h-screen bg-violet-950 bg-opacity-75">
+            <div className="Rectangle relative flex flex-col w-80 h-screen ">
                 <img 
                     src={profileData.user.image} 
                     alt="Profile"

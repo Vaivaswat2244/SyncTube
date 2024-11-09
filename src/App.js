@@ -21,6 +21,8 @@ import VideoUploadForm from "./components/UploadVideo.jsx";
 import axios from 'axios'
 import ProjectDescription from "./pages/projectdescription.js";
 import AllProjects from "./pages/allprojects.js";
+import VideoPlayerBasic from "./pages/mediaplayer.js";
+import VideoPlayerBasicEd from "./pages/mediaplayered.js";
 axios.defaults.withCredentials = true
 
 const App = () => {
@@ -79,6 +81,8 @@ const App = () => {
           <Route path="/projects/:id" element={<ProjectDescription />} />
           <Route path="/allprojects" element={<AllProjects/>}/>
           <Route path="/about" element={<About />}>  </Route>
+          <Route path="/media/:videoUrl" element={<VideoPlayerBasic/>}/>
+          <Route path="/mediaed/:videoUrl" element={<VideoPlayerBasicEd/>}/>
 
 
           <Route path="/editorprofile/:id" element={<EditorProfile />}>  </Route>

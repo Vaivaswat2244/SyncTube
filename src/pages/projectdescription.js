@@ -5,6 +5,8 @@ import { ArrowLeft, Clock, User, Video, Settings, FileCheck } from 'lucide-react
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import EditorCardmain from '../components/EditorCardmain';
+import Navbar from '../components/Navbar';
+import SideDashboard from '../components/SideDashboard';
 
 
 const ProjectDescription = () => {
@@ -42,6 +44,7 @@ const ProjectDescription = () => {
       );
 
       console.log('Video uploaded successfully:', response.data);
+      window.location.reload(); 
   } catch (error) {
       console.error('Error uploading video:', error);
       throw error;
@@ -136,17 +139,14 @@ const ProjectDescription = () => {
 
   if (role === 'youtuber' && project.status === 'planning') {
     return (
-      <div>
-        <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            {/* Back Button */}
-            <Link 
-              to="/myprojectsyoutuber" 
-              className="inline-flex items-center text-violet-600 hover:text-violet-700 mb-6"
-            >
-              <ArrowLeft className="w-5 h-5 mr-2" />
-              Back to Projects
-            </Link>
+      <div className='min-h-screen backgroung'>
+        <Navbar/>
+        <div className='min-h-screen pt-[72px]'>
+          <div className='flex'>
+          <SideDashboard/>
+          <div>
+          <div className="min-h-screen py-8 px-16 sm:px-20 lg:px-64">
+          <div className="max-w-4xl mx-auto">
 
             {/* Main Project Info Card */}
             <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-violet-200">
@@ -215,14 +215,12 @@ const ProjectDescription = () => {
                         <h3 className="font-medium text-gray-900 mb-2">{video.title}</h3>
                         <div className="space-y-2 text-sm text-gray-600">
                           <p>Uploaded: {new Date(video.uploadedAt).toLocaleDateString()}</p>
-                          <a 
-                            href={video.s3Url}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                          <button 
+                            onClick={() => navigate(`/mediaed/${encodeURIComponent(video.s3Url)}`)}
                             className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
                           >
                             View Video
-                          </a>
+                          </button>
                         </div>
                       </div>
                     ))}
@@ -245,14 +243,12 @@ const ProjectDescription = () => {
                           <h3 className="font-medium text-gray-900 mb-2">{video.title}</h3>
                           <div className="space-y-2 text-sm text-gray-600">
                             <p>Uploaded: {new Date(video.uploadedAt).toLocaleDateString()}</p>
-                            <a 
-                              href={video.s3Url}
-                              target="_blank"
-                              rel="noopener noreferrer"
+                            <button 
+                              onClick={() => navigate(`/media/${encodeURIComponent(video.s3Url)}`)}
                               className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
                             >
                               View Video
-                            </a>
+                            </button>
                           </div>
                         </div>
                       ))}
@@ -275,12 +271,21 @@ const ProjectDescription = () => {
         <div className="mb-8">
           
         </div>
+          </div>
+          </div>
+        </div>
       </div>
+      
     );
   }
 
   if (role === 'youtuber' && project.status === 'in-progress') {
     return (
+      <div className='min-h-screen backgroung'>
+        <Navbar/>
+        <div className='min-h-screen pt-[72px]'>
+          <div className='flex'>
+          <SideDashboard/>
       <div>
         <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -366,14 +371,12 @@ const ProjectDescription = () => {
                         <h3 className="font-medium text-gray-900 mb-2">{video.title}</h3>
                         <div className="space-y-2 text-sm text-gray-600">
                           <p>Uploaded: {new Date(video.uploadedAt).toLocaleDateString()}</p>
-                          <a 
-                            href={video.s3Url}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                          <button 
+                            onClick={() => navigate(`/mediaed/${encodeURIComponent(video.s3Url)}`)}
                             className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
                           >
                             View Video
-                          </a>
+                          </button>
                         </div>
                       </div>
                     ))}
@@ -396,14 +399,12 @@ const ProjectDescription = () => {
                           <h3 className="font-medium text-gray-900 mb-2">{video.title}</h3>
                           <div className="space-y-2 text-sm text-gray-600">
                             <p>Uploaded: {new Date(video.uploadedAt).toLocaleDateString()}</p>
-                            <a 
-                              href={video.s3Url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
-                            >
-                              View Video
-                            </a>
+                            <button 
+  onClick={() => navigate(`/media/${encodeURIComponent(video.s3Url)}`)}
+  className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
+>
+  View Video
+</button>
                           </div>
                         </div>
                       ))}
@@ -421,11 +422,19 @@ const ProjectDescription = () => {
           
         </div>
       </div>
+      </div>
+      </div>
+      </div>
     );
   }
 
   if (role === 'youtuber' && project.status === 'review') {
     return (
+      <div className='min-h-screen backgroung'>
+        <Navbar/>
+        <div className='min-h-screen pt-[72px]'>
+          <div className='flex'>
+          <SideDashboard/>
       <div>
         <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -505,14 +514,12 @@ const ProjectDescription = () => {
                         <h3 className="font-medium text-gray-900 mb-2">{video.title}</h3>
                         <div className="space-y-2 text-sm text-gray-600">
                           <p>Uploaded: {new Date(video.uploadedAt).toLocaleDateString()}</p>
-                          <a 
-                            href={video.s3Url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
-                          >
-                            View Video
-                          </a>
+                          <button 
+  onClick={() => navigate(`/mediaed/${encodeURIComponent(video.s3Url)}`)}
+  className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
+>
+  View Video
+</button>
                         </div>
                       </div>
                     ))}
@@ -535,14 +542,12 @@ const ProjectDescription = () => {
                           <h3 className="font-medium text-gray-900 mb-2">{video.title}</h3>
                           <div className="space-y-2 text-sm text-gray-600">
                             <p>Uploaded: {new Date(video.uploadedAt).toLocaleDateString()}</p>
-                            <a 
-                              href={video.s3Url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
-                            >
-                              View Video
-                            </a>
+                            <button 
+  onClick={() => navigate(`/media/${encodeURIComponent(video.s3Url)}`)}
+  className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
+>
+  View Video
+</button>
                           </div>
                           
                         </div>
@@ -561,11 +566,19 @@ const ProjectDescription = () => {
         
       </div>
       </div>
+      </div>
+      </div>
+      </div>
     );
   }
 
   if (role === 'editor' && project.status === 'planning') {
     return (
+      <div className='min-h-screen backgroung'>
+        <Navbar/>
+        <div className='min-h-screen pt-[72px]'>
+          <div className='flex'>
+          <SideDashboard/>
       <div>
         <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -645,14 +658,12 @@ const ProjectDescription = () => {
                         <h3 className="font-medium text-gray-900 mb-2">{video.title}</h3>
                         <div className="space-y-2 text-sm text-gray-600">
                           <p>Uploaded: {new Date(video.uploadedAt).toLocaleDateString()}</p>
-                          <a 
-                            href={video.s3Url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
-                          >
-                            View Video
-                          </a>
+                          <button 
+  onClick={() => navigate(`/mediaed/${encodeURIComponent(video.s3Url)}`)}
+  className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
+>
+  View Video
+</button>
                         </div>
                       </div>
                     ))}
@@ -675,14 +686,12 @@ const ProjectDescription = () => {
                           <h3 className="font-medium text-gray-900 mb-2">{video.title}</h3>
                           <div className="space-y-2 text-sm text-gray-600">
                             <p>Uploaded: {new Date(video.uploadedAt).toLocaleDateString()}</p>
-                            <a 
-                              href={video.s3Url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
-                            >
-                              View Video
-                            </a>
+                            <button 
+  onClick={() => navigate(`/media/${encodeURIComponent(video.s3Url)}`)}
+  className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
+>
+  View Video
+</button>
                           </div>
                           
                         </div>
@@ -706,11 +715,19 @@ const ProjectDescription = () => {
         
       </div>
       </div>
+      </div>
+      </div>
+      </div>
     );
   }
 
   if (role === 'editor' && project.status === 'in-progress') {
     return (
+      <div className='min-h-screen backgroung'>
+        <Navbar/>
+        <div className='min-h-screen pt-[72px]'>
+          <div className='flex'>
+          <SideDashboard/>
       <div>
         <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -796,14 +813,12 @@ const ProjectDescription = () => {
                         <h3 className="font-medium text-gray-900 mb-2">{video.title}</h3>
                         <div className="space-y-2 text-sm text-gray-600">
                           <p>Uploaded: {new Date(video.uploadedAt).toLocaleDateString()}</p>
-                          <a 
-                            href={video.s3Url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
-                          >
-                            View Video
-                          </a>
+                          <button 
+  onClick={() => navigate(`/mediaed/${encodeURIComponent(video.s3Url)}`)}
+  className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
+>
+  View Video
+</button>
                         </div>
                       </div>
                     ))}
@@ -826,14 +841,12 @@ const ProjectDescription = () => {
                           <h3 className="font-medium text-gray-900 mb-2">{video.title}</h3>
                           <div className="space-y-2 text-sm text-gray-600">
                             <p>Uploaded: {new Date(video.uploadedAt).toLocaleDateString()}</p>
-                            <a 
-                              href={video.s3Url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
-                            >
-                              View Video
-                            </a>
+                            <button 
+  onClick={() => navigate(`/media/${encodeURIComponent(video.s3Url)}`)}
+  className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
+>
+  View Video
+</button>
                           </div>
                           
                         </div>
@@ -868,11 +881,19 @@ const ProjectDescription = () => {
         
       </div>
       </div>
+      </div>
+      </div>
+      </div>
     );
   }
 
   if (role === 'editor' && project.status === 'review') {
     return (
+      <div className='min-h-screen backgroung'>
+        <Navbar/>
+        <div className='min-h-screen pt-[72px]'>
+          <div className='flex'>
+          <SideDashboard/>
       <div>
         <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -952,14 +973,12 @@ const ProjectDescription = () => {
                         <h3 className="font-medium text-gray-900 mb-2">{video.title}</h3>
                         <div className="space-y-2 text-sm text-gray-600">
                           <p>Uploaded: {new Date(video.uploadedAt).toLocaleDateString()}</p>
-                          <a 
-                            href={video.s3Url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
-                          >
-                            View Video
-                          </a>
+                          <button 
+  onClick={() => navigate(`/mediaed/${encodeURIComponent(video.s3Url)}`)}
+  className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
+>
+  View Video
+</button>
                         </div>
                       </div>
                     ))}
@@ -982,14 +1001,12 @@ const ProjectDescription = () => {
                           <h3 className="font-medium text-gray-900 mb-2">{video.title}</h3>
                           <div className="space-y-2 text-sm text-gray-600">
                             <p>Uploaded: {new Date(video.uploadedAt).toLocaleDateString()}</p>
-                            <a 
-                              href={video.s3Url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
-                            >
-                              View Video
-                            </a>
+                            <button 
+  onClick={() => navigate(`/media/${encodeURIComponent(video.s3Url)}`)}
+  className="inline-block bg-violet-500 text-white px-4 py-2 rounded-lg hover:bg-violet-600 transition-colors"
+>
+  View Video
+</button>
                           </div>
                           
                         </div>
@@ -1006,6 +1023,9 @@ const ProjectDescription = () => {
         {/* Apply Button */}
       <div className="mb-8">
         
+      </div>
+      </div>
+      </div>
       </div>
       </div>
     );

@@ -32,13 +32,13 @@ const AllProjects = () => {
       fetchProjects();
     }, []);
     return (
-        <div className='backgroung'>
-           <div className=''>
-           <Navbar />
-           </div>
-            <div className='flex' >
+      <div className='min-h-screen backgroung'>
+      <Navbar/>
+      <div className='min-h-screen pt-[72px]'>
+        <div className='flex'>
+        <SideDashboard/>
+        <div>
                 
-                <SideDashboard/>
 
                 {/* Project Card Section */}
                 <div className='ml-[8vw] flex-grow'>
@@ -50,6 +50,9 @@ const AllProjects = () => {
             </div>
 
 
+        </div>
+
+        </div>
         </div>
     )
 }

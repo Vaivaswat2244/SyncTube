@@ -47,6 +47,7 @@ const EditorCard = ({ application }) => {
       console.log(response);
       console.log("assigned");
       toast.success("Editor Assigned");
+      window.location.reload(); 
     }
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to approve application');
@@ -59,6 +60,7 @@ const EditorCard = ({ application }) => {
       console.log("rejected");
       if(response){
         toast.success("Application Rejected");
+        window.location.reload(); 
       }
       else{
         console.error("Some error occured")

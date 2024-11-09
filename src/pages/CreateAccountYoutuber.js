@@ -29,7 +29,7 @@ const CreateAccountYoutuber = ({ isLoggedIn, setIsLoggeIn }) => {
     function submitHandler(event) {
         event.preventDefault();
 
-        const url = 'http://localhost:3002/api/profile/create-profile';
+        const url = 'https://synctube-backend-final.onrender.com/api/profile/create-profile';
         const token = localStorage.getItem('token');
         console.log(token);
         if (!token) {

@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 
 const Home = ({ isLoggedIn }) => {
   const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem('token');
 
   // Simulate loading delay with useEffect
   useEffect(() => {
@@ -46,20 +47,21 @@ const Home = ({ isLoggedIn }) => {
                 SyncTube is more than a platform; it's a creative ecosystem. We connect YouTubers with a network of talented editors, ensuring a seamless collaboration that results in stunning videos. Say goodbye to the hassle of finding the right editor; our platform streamlines the process, letting you concentrate on what you do best – creating incredible content for your audience.
               </div>
 
-              <div className='flex felx-col'>
-                <Link to="/login">
-                  <button className='bg-blue-500  btn-pink rounded-xl text-richblack-100 py-[8px] px-[12px] border border-richblack-700'>
-                    Login
-                  </button>
-                </Link>
+              {!localStorage.getItem('token') && (
+  <div className='flex felx-col'>
+    <Link to="/login">
+      <button className='bg-blue-500 btn-pink rounded-xl text-richblack-100 py-[8px] px-[12px] border border-richblack-700'>
+        Login
+      </button>
+    </Link>
 
-                <Link to="/signup">
-                  <button className='bg-richblack-800 ml-[3vw] rounded-xl btn-pink text-richblack-100 py-[8px] px-[12px] border border-richblack-700'>
-                    SignUp
-                  </button>
-                </Link>
-
-              </div>
+    <Link to="/signup">
+      <button className='bg-richblack-800 ml-[3vw] rounded-xl btn-pink text-richblack-100 py-[8px] px-[12px] border border-richblack-700'>
+        SignUp
+      </button>
+    </Link>
+  </div>
+)}
             </div>
 
             <div className='mt-[4vh]'>

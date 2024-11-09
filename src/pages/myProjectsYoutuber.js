@@ -31,12 +31,13 @@ const MyProjectsYoutuber = () => {
         fetchProjects();
       }, []);
     return (
-        <div className='backgroung'>
-           <div className=''>
-           <Navbar />
-           </div>
-            <div className='flex' >
-                <SideDashboard/>
+      <div className='min-h-screen backgroung'>
+      <Navbar/>
+      <div className='min-h-screen pt-[72px]'>
+        <div className='flex'>
+        <SideDashboard/>
+        
+          <div>
 
                 {/* Project Card Section */}
                 <div className='ml-[8vw] flex-grow'>
@@ -47,7 +48,8 @@ const MyProjectsYoutuber = () => {
 
             </div>
 
-
+          </div>
+          </div>
         </div>
     )
 }

@@ -11,6 +11,8 @@ const Navbar = () => {
   
 
   return (
+    <div className='fixed top-0 left-0 right-0  shadow-md z-50'>
+
     <div className='flex justify-between fixed z-10 items-center  w-[95vw] py-4 mx-auto '>
             <Link to="/">
                <img src={Sync} alt='Logo' className='ml-12'  width={160} height={32} loading="lazy" />   
@@ -85,6 +87,7 @@ const Navbar = () => {
           
 
 
+    </div>
     </div>
   )
 }
